@@ -51,12 +51,11 @@ def deploy_token(front_end_update=False):
  """
 
 def update_front_end():
-
-    copy_folder_to_frontend("./build", "../fruit-crush-moralis/my-app/src/chain-info")
+    copy_folder_to_frontend("./build", "../GameDapp/game-dapp/chain-info")
 
     with open("brownie-config.yaml", "r") as brownie_config:
         config_dict = yaml.load(brownie_config, Loader=yaml.FullLoader)
-        with open("../fruit-crush-moralis/my-app/src/brownie-config.json", "w") as brownie_config_json:
+        with open("../GameDapp/game-dapp/src/brownie-config.json", "w") as brownie_config_json:
             json.dump(config_dict, brownie_config_json)
         print("Front end updated")
 
@@ -68,4 +67,5 @@ def copy_folder_to_frontend(src, dest):
 
 def main():
     deploy_token(front_end_update=True)
+    update_front_end()
     
